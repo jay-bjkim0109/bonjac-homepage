@@ -20,6 +20,7 @@ Always answer the user in Korean (한국어). Commit messages are in Korean too.
 - `npm run build` — static export to `out/`
 - `npm run preview` — serve `out/` locally
 - Deploy: `aws s3 sync out/ s3://<bucket> --delete`
+- GitHub Pages: pushing `develop` runs `.github/workflows/pages.yml`, which builds with `NEXT_PUBLIC_BASE_PATH=/<repo>` and publishes `out/` at `https://jay-bjkim0109.github.io/bonjac-homepage/`. The S3 build leaves that variable unset, so the site stays at the domain root there.
 
 There are no tests or linter; verify changes with `npm run build`.
 
@@ -38,7 +39,8 @@ There are no tests or linter; verify changes with `npm run build`.
 - `app/layout.tsx` — root layout and site metadata
 - `app/b/page.tsx`, `app/c/page.tsx` — the two landing-page directions being compared (`/b`, `/c`), built from canvas artboards TypeB and TypeC. Both are `noindex`.
 - `app/site.tsx` — parts shared by `/b` and `/c` (header, footer, store lists, Beauty-Tech section).
-- There is no page at `/` for now: the old landing page was deleted, so the export has no root `index.html` until a direction is chosen.
+- `app/page.tsx` — the root has no page of its own yet: it sends visitors to `/b/` with a meta refresh until a direction is chosen.
+- `app/asset.ts` — `asset()` puts the base path in front of files from `public/`. Use it for every image `src`; a bare `/images/...` breaks on GitHub Pages.
 - `app/globals.css` — all styling; plain CSS with color tokens on `:root`. No Tailwind or UI library — keep it that way unless asked.
 - `DESIGN.md` — design system (based on 29CM) and the only source of design rules. Read it before any UI change and keep `app/globals.css` in sync with it: if a value changes in one, change the other in the same edit. When it is silent on something, ask the user and add the rule there first; don't take values from the 29CM source page.
 - Claude Design canvas `bonjac-hompage` (https://claude.ai/artifact/DAeNt7RR7TsVeWH3V2rk3u) — the page design the site is based on: landing-page directions A/B/C and reference boards. Not in the repo; read it with the Artifact tool as `DESIGN.md` (Design canvas) describes.

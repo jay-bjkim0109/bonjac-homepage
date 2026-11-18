@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { asset } from "../asset";
 import { CopyText } from "../copy-text";
 import { Footer, Header, News, SelvaticoTitle, Stores, Tech } from "../site";
 
@@ -20,7 +21,7 @@ const axes = [
     label: "Fragrance Brand",
     title: "Selvatico",
     body: "향수를 새로운 문학으로 정의하며, 향기를 읽는 새로운 경험을 만듭니다.",
-    image: "/images/selvatico-perfume.jpg",
+    image: asset("/images/selvatico-perfume.jpg"),
     alt: "빛을 받아 초록 그림자를 드리운 Selvatico 오 드 퍼퓸 병",
     href: "#selvatico",
     linkText: "브랜드 보기",
@@ -29,7 +30,7 @@ const axes = [
     label: "IT Service",
     title: "Technology",
     body: "향을 고르는 순간과 향을 만나는 현장을 기술로 잇습니다.",
-    image: "/images/accord-seoul.jpg",
+    image: asset("/images/accord-seoul.jpg"),
     alt: "방문객으로 가득 찬 Accord Seoul 2026 행사장",
     href: "#tech",
     linkText: "뷰티테크 보기",
@@ -41,28 +42,28 @@ const tiles = [
     label: "Brand Story",
     title: "향기로 옮긴 이야기",
     body: "프랑스 그라스와 서울 사이를 오가며, 피어나는 이야기를 향기로 옮깁니다.",
-    image: "/images/selvatico-reading.jpg",
+    image: asset("/images/selvatico-reading.jpg"),
     alt: "테이블에 앉아 책을 읽는 여성의 뒷모습",
   },
   {
     label: "Our Scents",
     title: "그라스에서 만든 향",
     body: "1850년부터 역사를 이어온 향료 하우스와 함께 원료를 고릅니다.",
-    image: "/images/grasse.jpg",
+    image: asset("/images/grasse.jpg"),
     alt: "언덕 위에 자리한 프랑스 그라스의 마을 전경",
   },
   {
     label: "Collection",
     title: "향수부터 바디 케어까지",
     body: "오 드 퍼퓸 7가지 향과 핸드·바디 워시, 크림, 바디 미스트, 핸드 솔루션.",
-    image: "/images/selvatico-collection.jpg",
+    image: asset("/images/selvatico-collection.jpg"),
     alt: "향수, 핸드 앤 바디 워시, 크림이 나란히 놓인 Selvatico 제품 컬렉션",
   },
   {
     label: "Packaging",
     title: "책을 닮은 패키지",
     body: "향의 이야기를 담는 또 하나의 챕터로, 책의 구조와 타이포그래피를 입혔습니다.",
-    image: "/images/selvatico-packaging.jpg",
+    image: asset("/images/selvatico-packaging.jpg"),
     alt: "책처럼 쌓아 올린 Selvatico 패키지 상자",
   },
 ];

@@ -1,5 +1,7 @@
 // Shared parts of the /b and /c landing-page directions (design canvas TypeB, TypeC)
 
+import { asset } from "./asset";
+
 export function Header({ nav }: { nav: { href: string; label: string }[] }) {
   return (
     <header className="header">
@@ -73,7 +75,7 @@ export function Stores() {
   return (
     <div className="split">
       <img
-        src="/images/selvatico-popup.jpg"
+        src={asset("/images/selvatico-popup.jpg")}
         alt="책장과 꽃으로 꾸민 Selvatico 팝업 스토어"
         loading="lazy"
         className="photo ratio-16-9"
@@ -125,7 +127,7 @@ const services: {
     label: "Support Event",
     title: "ACCORD SEOUL",
     body: "조향사들의 향 축제 Accord Seoul에서 부스 맵과 세미나 안내 등 행사 서비스를 지원했습니다.",
-    image: "/images/accord-seoul.jpg",
+    image: asset("/images/accord-seoul.jpg"),
     alt: "방문객으로 가득 찬 Accord Seoul 2026 행사장",
     href: "https://obbu.app/accordseoul-2026",
   },
@@ -133,7 +135,7 @@ const services: {
     label: "AI SCENT FINDER",
     title: "AI Scent Finder",
     body: "원하는 향을 찾는 추천 서비스입니다. 프로파일링 질문에 답하면 어울리는 제품을 제안하고, 매장에서의 혜택과 고객 관리로 이어집니다.",
-    image: "/images/scent-finder.jpg",
+    image: asset("/images/scent-finder.jpg"),
     alt: "Selvatico AI Scent Finder 시작 화면",
     href: "https://scentid.store/selvatico/ciie-2026/start",
   },
