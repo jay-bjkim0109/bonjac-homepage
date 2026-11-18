@@ -35,8 +35,8 @@ The canvas is edited by hand too, so read `project/canvas.json` again each time 
 | ink-secondary | `#303033` | Body copy |
 | ink-tertiary | `#474747` | Pressed text of outline buttons, pressed fill of primary buttons |
 | muted | `#5d5d5d` | Footer, meta |
-| border | `#dddddd` | Outlines, dividers |
-| pressed | `#f4f4f4` | Pressed background of outline buttons |
+| border | `#dddddd` | Outlines, dividers; pressed fill of gray buttons |
+| pressed | `#f4f4f4` | Pressed background of outline buttons; fill of gray buttons; hover background of a block link, a linked media card or a news panel |
 | focus | `#375fff` | Focus outline (1px, 2px offset) |
 
 Black and white are the structural colors; the grays above are the only other neutrals, and `focus` blue appears only on the focus outline. No brand accent color. Light theme only.
@@ -52,12 +52,17 @@ Pretendard Variable (self-hosted via the `pretendard` npm package and `next/font
 | Logo | 23px / 700 |
 | Card title | 23px / 600 / 29.9px |
 | Body | 16px / 400 / 24px |
+| Item title (news card) | 16px / 600 / 24px |
 | Button, nav | 14px / 700 |
-| Eyebrow | 13px / 700 / 18.2px |
+| Eyebrow, date | 13px / 700 / 18.2px |
+| Source meta | 13px / 400 / 18.2px, `muted` |
 | Footer | 12px / 400 / 16.3px |
 | Card label | 11px / 700 / 15px |
 
 - The hero headline is our own addition for a corporate landing page. It scales only inside the mobile range and is a fixed 60px from 750px up, so tablet and desktop match.
+- Direction B (`/b`) follows its canvas artboard and lets the hero headline grow to 72px (`clamp(40px, 8vw, 72px)`). This holds only while the directions are compared; settle on one value when a direction is chosen.
+- The card title style is also used for a lead paragraph (About in `/b`) and for the value in a fact card.
+- Dates are not uppercase text, so they take the eyebrow size and weight as they are.
 - Sizes are the same on mobile and tablet unless a mobile value is given.
 - Eyebrow and card label are Latin text set in uppercase with no added letter-spacing. Korean text is never letter-spaced.
 - Korean text breaks between words, not inside them (`word-break: keep-all`).
@@ -77,16 +82,27 @@ Pretendard Variable (self-hosted via the `pretendard` npm package and `next/font
 - Text measure: hero lead max-width 560px; section paragraphs max-width 640px. These hold on desktop too: text does not stretch to the container width.
 - Card grid: one column on mobile. From 768px up, as many equal columns as fit with a 320px minimum column width (two on tablet, up to three on desktop), 24px gap. Cards stretch to fill the row when there are fewer cards than columns.
 - Type, spacing and component sizes are the same on tablet and desktop. Desktop gains width and columns, nothing else.
+- Other grids use the same rule with a different minimum column width: 200px for fact cards, 260px for the four image tiles in `/c`.
+- Split row: two blocks side by side with a 24px gap, each at least 320px wide; when both don't fit, they stack. A photo stays above its text when stacked. A section whose title sits beside its content (About in `/c`, Contact in `/b` and `/c`) is a split row with the title column at least 280px and the content column twice as wide. The title and the first line of the content sit on the same baseline.
 - Rules: the header bottom and the footer top are 1px `ink`; dividers between sections are 1px `border`.
 
 ## Components
 
-- **Header**: sticky at the top, white fill, 60px high, 1px `ink` bottom rule. Logo on the left, nav on the right. The nav stays inline on mobile (no hamburger menu); link gap 24px (mobile: 16px).
+- **Header**: sticky at the top, white fill, 60px high, 1px `ink` bottom rule. Logo on the left, nav on the right. The nav stays inline on mobile (no hamburger menu) and never wraps; link gap 24px (mobile: 16px). When the links don't fit beside the logo (the five-link nav of `/b` and `/c` on mobile), the logo stays fixed and the nav scrolls sideways by drag, with no scrollbar, arrows or fade: the link cut off at the right edge is the cue.
 - **Primary button**: black fill, white 14px/700 text, 4px radius, 52px height, 24px horizontal padding; pressed `#474747` fill
 - **Outline button**: white fill, black 14px/700 text, 1px `#dddddd` border, 4px radius, 52px height, 24px horizontal padding; pressed `#f4f4f4` with `#474747` text
+- **Gray button**: `#f4f4f4` fill, black 14px/700 text, no border, 4px radius, 52px height, 24px horizontal padding; pressed `#dddddd` fill. Used for the two in-page buttons under the hero (`브랜드 보기`, `뷰티테크 보기`), which carry equal weight.
 - **Card**: transparent, 1px `#dddddd` border, 0px radius, 28px padding
+- **Panel**: a card used for facts and news items: same border, radius and 28px padding, 8px gap between its lines. A news panel is one link (whole card), opens in a new tab, and ends with the source and a text arrow in `muted`. On hover it fills with `pressed`.
+- **Media card**: 1px `#dddddd` border, 0px radius, photo flush to the top edge, then a 28px-padded body with an 8px gap: card label, card title, body copy, and an optional button. A media card that links out (ACCORD SEOUL to its obbu page, AI Scent Finder to scentid.store, both in a new tab) is one link across the whole card; on hover the card fills with `pressed` behind its text, and the photo does not change.
+- **Image tile**: a photo with card label, card title and body copy under it; no border, 16px between photo and text.
+- **Photo**: always cropped to a fixed ratio with `object-fit: cover`: 4:3 for brand photos, 16:9 for the store photo, 16:10 inside service cards. The full-width hero photo in `/b` is `clamp(280px, 45vw, 640px)` high.
+- **Rule list**: the Stores and Online lists beside the store photo, with no box around them. A head row holds the card label alone; under it a 1px `ink` rule, then one item per row with 8px vertical padding and a 1px `border` rule below each. The two lists sit side by side (24px gap, each at least 200px wide) and stack on mobile. Stores is one block link as a whole. In Online each row is its own link to that shop (new tab): the name alone, with no arrow, and the `pressed` fill on hover.
+- **Block link**: a whole block that is one link, with no underline. On hover the block fills with `pressed` (`#f4f4f4`), reaching 8px beyond the text on every side; the text keeps its position and colors. Used for the Stores list (label and store names), which opens the selvatico.co store page in a new tab.
 - **Nav link**: black, no underline; underline on hover
+- **Title link**: a section title that links out (the Selvatico title, to selvatico.co in a new tab). Same as a nav link: black, no underline; underline on hover. No arrow and no icon.
 - **Text link** (a link inside body copy): black, always underlined, no hover change
+- **Copy link**: the email address and phone number in Contact. Each looks like a text link (black, underlined, body size) but is a button: a click copies the value, and for one second the clicked value turns transparent and `Copied` shows in its place, centered, 13px/700, with no background fill. It appears and disappears instantly and moves nothing else. It does not open the mail or phone app. The two sit on one line with a `muted` middle dot (`·`) between them, 8px on each side, as in the footer, and wrap (8px between lines) only when the line is too narrow; the click area is 32px high.
 - **External link**: opens in a new tab; a button that leaves the site ends with a text arrow (`→`)
 - Buttons have no hover state; pressed and focus are the only state changes.
 - **Footer**: `muted` text, 28px vertical padding, 1px `ink` top rule.
@@ -104,7 +120,8 @@ Pretendard Variable (self-hosted via the `pretendard` npm package and `next/font
 - This covers the favicon and the Open Graph image too: don't create either until the user provides the file.
 - Images are square-cornered, with no shadows, gradients, or color overlays.
 - Until assets are provided, a section works as type and rules alone; don't add placeholder visuals.
-- `references/` is local only and is never linked from the site. An image the site uses is exported from there into `public/images/` (WebP or JPEG; PNG only when transparency is needed), at twice its displayed width and no wider than 1536px, because `next/image` runs unoptimized.
+- The photos in `public/images/` now come from the design canvas, where the user's brand and event images are uploaded as assets. Download them with the Artifact tool (`action: "read"`, `path`: the 32-character id in the artboard's `/_blob/<id>` URL), then size them by the rule below.
+- `references/` is local only and is never linked from the site. An image the site uses is exported from there into `public/images/` (WebP or JPEG; PNG only when transparency is needed), at twice its displayed width and no wider than 1536px, because `next/image` runs unoptimized. One exception: the full-width hero photo of `/b` (`selvatico-perfume.jpg`) spans the whole viewport, so it may be up to 2400px wide.
 
 ## Motion
 
@@ -113,8 +130,8 @@ Pretendard Variable (self-hosted via the `pretendard` npm package and `next/font
 
 ## Accessibility
 
-- Text contrast is at least 4.5:1. Every text token above passes on `canvas`; don't put `muted` or lighter text on `pressed`.
-- Buttons and nav links have a tap target at least 44px high. Text links inside body copy are exempt.
+- Text contrast is at least 4.5:1. Every text token above passes on `canvas`; `muted` on `pressed` also passes (about 6:1), which the hovered news panel relies on for its source line; don't put anything lighter than `muted` on `pressed`.
+- Buttons and nav links have a tap target at least 44px high. Text links inside body copy are exempt, and so are the copy links in Contact (32px).
 - Every interactive element shows the focus outline from Colors on `:focus-visible`. Don't remove it.
 - When an accessibility finding can be fixed with the tokens and rules in this file, fix it. When the fix would need a new or changed token (for example a thicker focus outline), don't change it: tell the user what the finding needs.
 

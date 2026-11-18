@@ -57,25 +57,48 @@ a {
   border-bottom: 1px solid var(--ink);
 }
 
+/* Header links can't be picked up and dragged, and their text can't be selected */
+.header a {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
   height: 60px;
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  height: 44px;
   font-size: 23px;
   font-weight: 700;
   text-decoration: none;
 }
 
+/* Links that don't fit beside the logo scroll sideways by drag (DESIGN.md, Header) */
 .nav {
   display: flex;
   gap: 24px;
+  min-width: 0;
+  /* Room for the focus outline, which the scroll container would clip */
+  margin: -4px;
+  padding: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav::-webkit-scrollbar {
+  display: none;
 }
 
 .nav a {
+  flex: none;
   display: inline-flex;
   align-items: center;
   height: 44px;
@@ -98,8 +121,11 @@ a {
   line-height: 1.2;
 }
 
-.eyebrow {
+.hero .eyebrow {
   margin-bottom: 16px;
+}
+
+.eyebrow {
   font-size: 13px;
   font-weight: 700;
   line-height: 18.2px;
@@ -152,8 +178,16 @@ a {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--col-min, 320px), 1fr));
   gap: 24px;
+}
+
+.grid-facts {
+  --col-min: 200px;
+}
+
+.grid-tiles {
+  --col-min: 260px;
 }
 
 .card {
@@ -163,8 +197,7 @@ a {
   border: 1px solid var(--border);
 }
 
-.card .card-label {
-  margin-bottom: 8px;
+.card-label {
   color: var(--ink);
   font-size: 11px;
   font-weight: 700;
@@ -172,11 +205,19 @@ a {
   text-transform: uppercase;
 }
 
-.card h3 {
-  margin-bottom: 16px;
+.card .card-label {
+  margin-bottom: 8px;
+}
+
+.card h3,
+.card-title {
   font-size: 23px;
   font-weight: 600;
   line-height: 29.9px;
+}
+
+.card h3 {
+  margin-bottom: 16px;
 }
 
 .card-link {
@@ -210,10 +251,392 @@ a {
   margin-top: 16px;
 }
 
+/* Directions B and C (/b, /c), built from the design canvas (DESIGN.md) */
+.band {
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+  scroll-margin-top: 60px;
+}
+
+.band-first {
+  border-top: 0;
+}
+
+.band-title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 60px;
+}
+
+.title-link {
+  text-decoration: none;
+}
+
+.title-link:hover {
+  text-decoration: underline;
+}
+
+.band-head {
+  margin-bottom: 24px;
+}
+
+.band-head .copy {
+  margin-top: 8px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap, 24px);
+}
+
+.gap-16 {
+  --gap: 16px;
+}
+
+.gap-8 {
+  --gap: 8px;
+}
+
+.start {
+  align-items: flex-start;
+}
+
+.split {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.split > * {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.split-center {
+  align-items: center;
+}
+
+.split-end {
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+/* Photo stays above its text when the row wraps */
+.split-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+.split-hero > :first-child {
+  flex: 3 1 480px;
+}
+
+.split-hero > :last-child {
+  flex: 2 1 320px;
+}
+
+/* The title and the first line of its content share a baseline */
+.split-aside {
+  align-items: baseline;
+}
+
+.split-aside > :first-child {
+  flex: 1 1 280px;
+}
+
+.split-aside > :last-child {
+  flex: 2 1 320px;
+}
+
+.split-lists {
+  align-content: flex-start;
+}
+
+.split-lists > * {
+  flex: 1 1 200px;
+}
+
+/* The block link's -8px side margins take 16px off its share; give it back */
+.split-lists > .block-link {
+  flex-basis: 216px;
+}
+
+/* The two-axis cards under the /c hero */
+.axes {
+  align-self: stretch;
+  margin-top: 24px;
+}
+
+.axes .copy {
+  margin-top: 0;
+}
+
+.headline {
+  font-size: clamp(40px, 8vw, 60px);
+  font-weight: 700;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.headline-b {
+  font-size: clamp(40px, 8vw, 72px);
+}
+
+.copy {
+  color: var(--ink-secondary);
+}
+
+.measure {
+  max-width: 640px;
+}
+
+.measure-lead {
+  max-width: 560px;
+}
+
+.item-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.date {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 18.2px;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 18.2px;
+  text-decoration: none;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.button-gray {
+  display: inline-flex;
+  align-items: center;
+  height: 52px;
+  padding: 0 24px;
+  border-radius: 4px;
+  background: var(--pressed);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.button-gray:active {
+  background: var(--border);
+}
+
+.button-outline {
+  display: inline-flex;
+  align-items: center;
+  height: 52px;
+  padding: 0 24px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--canvas);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.button-outline:active {
+  background: var(--pressed);
+  color: var(--ink-tertiary);
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.photo-hero {
+  height: clamp(280px, 45vw, 640px);
+}
+
+.ratio-4-3 {
+  aspect-ratio: 4 / 3;
+}
+
+.ratio-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+.ratio-16-10 {
+  aspect-ratio: 16 / 10;
+}
+
+.panel {
+  padding: 28px;
+  border: 1px solid var(--border);
+}
+
+a.panel {
+  text-decoration: none;
+}
+
+a.panel:hover {
+  background: var(--pressed);
+}
+
+.panel .item-title {
+  flex: 1;
+}
+
+.panel .meta {
+  margin-top: 8px;
+}
+
+.media-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+}
+
+a.media-card {
+  text-decoration: none;
+}
+
+a.media-card:hover {
+  background: var(--pressed);
+}
+
+.media-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 28px;
+}
+
+.media-card-body .copy {
+  flex: 1;
+  margin-top: 8px;
+}
+
+.media-card-body .button-gray {
+  margin-top: 16px;
+}
+
+/* Padding gives the hover fill room; the negative margin keeps the text aligned */
+.block-link {
+  display: block;
+  margin: -8px;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.block-link:hover {
+  background: var(--pressed);
+}
+
+.rule-list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--ink);
+}
+
+/* Same line height as the meta text, so both list heads end on the same rule */
+.rule-list-head .card-label {
+  line-height: 18.2px;
+}
+
+.rule-list {
+  padding: 0;
+  list-style: none;
+  color: var(--ink-secondary);
+}
+
+.rule-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Each row is its own link; the fill reaches 8px past the text like a block link */
+.rule-list-links li {
+  padding: 0;
+}
+
+.rule-list-links a {
+  display: block;
+  margin: 0 -8px;
+  padding: 8px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.rule-list-links a:hover {
+  background: var(--pressed);
+}
+
+/* Email and phone on one line; they wrap only when the line is too narrow */
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.contact-dot {
+  color: var(--muted);
+}
+
+/* Padding widens the click area; the negative margin keeps the text where it was */
+.copy-link {
+  position: relative;
+  margin: -4px -8px;
+  padding: 4px 8px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.copy-link.is-copied {
+  text-decoration: none;
+}
+
+.copy-link.is-copied .copy-value {
+  visibility: hidden;
+}
+
+.copy-flag {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
 /* Mobile layout; 768px and up is the fluid tablet-to-desktop layout (DESIGN.md) */
 @media (max-width: 767px) {
   .nav {
     gap: 16px;
+  }
+
+  .band {
+    padding: 60px 0;
+  }
+
+  .band-title {
+    font-size: 28px;
+    line-height: 42px;
   }
 
   .hero {

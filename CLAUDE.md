@@ -36,7 +36,9 @@ There are no tests or linter; verify changes with `npm run build`.
 ## Structure
 
 - `app/layout.tsx` — root layout and site metadata
-- `app/page.tsx` — the single landing page (hero, About, Business, Contact)
+- `app/b/page.tsx`, `app/c/page.tsx` — the two landing-page directions being compared (`/b`, `/c`), built from canvas artboards TypeB and TypeC. Both are `noindex`.
+- `app/site.tsx` — parts shared by `/b` and `/c` (header, footer, store lists, Beauty-Tech section).
+- There is no page at `/` for now: the old landing page was deleted, so the export has no root `index.html` until a direction is chosen.
 - `app/globals.css` — all styling; plain CSS with color tokens on `:root`. No Tailwind or UI library — keep it that way unless asked.
 - `DESIGN.md` — design system (based on 29CM) and the only source of design rules. Read it before any UI change and keep `app/globals.css` in sync with it: if a value changes in one, change the other in the same edit. When it is silent on something, ask the user and add the rule there first; don't take values from the 29CM source page.
 - Claude Design canvas `bonjac-hompage` (https://claude.ai/artifact/DAeNt7RR7TsVeWH3V2rk3u) — the page design the site is based on: landing-page directions A/B/C and reference boards. Not in the repo; read it with the Artifact tool as `DESIGN.md` (Design canvas) describes.
@@ -56,6 +58,6 @@ There are no tests or linter; verify changes with `npm run build`.
 
 ## Notes
 
-- Copy in `app/page.tsx` is a draft; the obbu description is not confirmed by the user. Company details in the footer come from the selvatico.co footer.
+- Copy in `/b` and `/c` comes from the design canvas and is a draft; the obbu description is not confirmed by the user. Company details in the footer come from the selvatico.co footer.
 - S3 website hosting: index document `index.html`, error document `404.html`. There is no `app/not-found.tsx` yet, so the export ships the Next.js default 404; `DESIGN.md` (Components) has the rule for the page when it is built.
 - No favicon or Open Graph image yet: both wait for assets from the user (`DESIGN.md`, Imagery).
