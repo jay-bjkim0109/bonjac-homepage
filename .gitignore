@@ -16,6 +16,9 @@ next-env.d.ts
 *.pem
 npm-debug.log*
 
+# local reference material (large PDFs)
+/references/
+
 # tooling
 .omc/
 .vercel
