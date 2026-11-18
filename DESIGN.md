@@ -4,6 +4,28 @@ Based on the 29CM design system from https://oh-my-design.kr/design-systems/29cm
 
 This file is the only source of design rules. The source page is background on where the values came from, not a second rulebook: when this file is silent on something, don't take a value from the source page or invent one. Ask the user, then add the rule here before using it.
 
+## Design canvas
+
+The page design lives in the Claude Design canvas `bonjac-hompage`: https://claude.ai/artifact/DAeNt7RR7TsVeWH3V2rk3u
+
+The canvas shows what the page looks like (structure, composition, copy); this file holds the rules (tokens, components, constraints). Read both before building or changing a page. Where they disagree, don't pick one: ask the user.
+
+- **MainPage** page: three directions for the landing page, each as Desktop (1440px), Tablet (768px) and Mobile (390px) artboards.
+  - A · 타이포 인덱스 — `project/TypeA.dc.html`
+  - B · 이미지 매거진 — `project/TypeB.dc.html`
+  - C · 두 축과 여정 — `project/TypeC.dc.html`
+- **References** page: boards of the source material (Selvatico brand decks, the Accord Seoul 2026 deck, selvatico.co screens, the AI Scent Finder). `project/Ref*.dc.html`.
+- Each `Type*.dc.html` holds the full responsive source for its direction. `Type*-Tablet.dc.html` and `Type*-Mobile.dc.html` only import it at a narrower width, so read and edit the base file.
+
+To read it, use the Artifact tool, not a web fetch:
+
+```
+Artifact { action: "read", url: "https://claude.ai/artifact/DAeNt7RR7TsVeWH3V2rk3u", path: "project/canvas.json" }   # index: artboards, pages, notes
+Artifact { action: "read", url: "https://claude.ai/artifact/DAeNt7RR7TsVeWH3V2rk3u", path: "project/TypeA.dc.html" } # one direction's source
+```
+
+The canvas is edited by hand too, so read `project/canvas.json` again each time instead of relying on the list above.
+
 ## Colors
 
 | Token | Value | Use |
@@ -49,12 +71,12 @@ Pretendard Variable (self-hosted via the `pretendard` npm package and `next/font
 
 ## Layout
 
-- Two layouts only: mobile and tablet. Both must work fully.
-- Breakpoint: below 768px viewport width is mobile; 768px and up is tablet.
-- Container: max-width 768px, centered, 24px side padding.
-- Text measure: hero lead max-width 560px; section paragraphs max-width 640px.
-- Card grid: one column on mobile, two columns on tablet, 24px gap.
-- There is no separate desktop layout. On desktop the user sees the same page as on tablet: the tablet layout at its 768px width, centered, not stretched or rearranged for the wider screen.
+- Three layouts: mobile, tablet and desktop. All must work fully. They are designed at 390px, 768px and 1440px, the artboard widths in the design canvas.
+- Breakpoint: below 768px viewport width is mobile. That is the only breakpoint: from 768px up the layout is fluid, and desktop is the same layout grown to the full container width, with no values of its own.
+- Container: max-width 1200px, centered, 24px side padding. On a viewport wider than that the page stays at 1200px and the margins grow.
+- Text measure: hero lead max-width 560px; section paragraphs max-width 640px. These hold on desktop too: text does not stretch to the container width.
+- Card grid: one column on mobile. From 768px up, as many equal columns as fit with a 320px minimum column width (two on tablet, up to three on desktop), 24px gap. Cards stretch to fill the row when there are fewer cards than columns.
+- Type, spacing and component sizes are the same on tablet and desktop. Desktop gains width and columns, nothing else.
 - Rules: the header bottom and the footer top are 1px `ink`; dividers between sections are 1px `border`.
 
 ## Components

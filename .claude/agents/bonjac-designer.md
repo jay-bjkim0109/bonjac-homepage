@@ -25,8 +25,8 @@ You design; you do not code. Never create, edit, or delete any file in the repos
 
 ## Viewports
 
-- Each design shows both layouts defined in the Layout section of `DESIGN.md`: mobile and tablet. Take the breakpoint, container width, and grid from there.
-- Don't design a desktop layout; `DESIGN.md` explains what desktop users see.
+- Each design shows the three layouts defined in the Layout section of `DESIGN.md`: mobile, tablet and desktop. Take the artboard widths, breakpoint, container width, and grid from there.
+- Desktop is the tablet layout grown to the container width, not a separate design: don't give it its own type sizes, spacing, or components.
 
 ## Rules
 

@@ -39,6 +39,7 @@ There are no tests or linter; verify changes with `npm run build`.
 - `app/page.tsx` — the single landing page (hero, About, Business, Contact)
 - `app/globals.css` — all styling; plain CSS with color tokens on `:root`. No Tailwind or UI library — keep it that way unless asked.
 - `DESIGN.md` — design system (based on 29CM) and the only source of design rules. Read it before any UI change and keep `app/globals.css` in sync with it: if a value changes in one, change the other in the same edit. When it is silent on something, ask the user and add the rule there first; don't take values from the 29CM source page.
+- Claude Design canvas `bonjac-hompage` (https://claude.ai/artifact/DAeNt7RR7TsVeWH3V2rk3u) — the page design the site is based on: landing-page directions A/B/C and reference boards. Not in the repo; read it with the Artifact tool as `DESIGN.md` (Design canvas) describes.
 - `public/images/` — images the site uses, exported from `references/` as `DESIGN.md` (Imagery) describes. Create the folder when the first asset is added.
 - `reference.md` — press coverage and notes about Bonjac. Use it, not memory, for company facts.
 - `references/` — brand decks and the Accord Seoul PDF. Local only (gitignored, large files).
@@ -46,9 +47,9 @@ There are no tests or linter; verify changes with `npm run build`.
 
 ## Design workflow
 
-- For a new page or section, or a visual change the user should see before it is built, delegate to the `bonjac-designer` agent. It publishes a design artifact and never edits the repository.
+- For a new page or section, or a visual change the user should see before it is built, delegate to the `bonjac-designer` agent. It publishes a design artifact and never edits the repository. For the landing page, give it the `bonjac-hompage` canvas URL so it revises that canvas instead of creating a new artifact.
 - The designer cannot run shell commands. When a design needs an image out of a PDF in `references/`, export it to `public/images/` in the main session first and give the designer the path.
-- Once the user approves the design, implement it in the main session in `app/` following `DESIGN.md`, then run `npm run build`.
+- Once the user approves the design, implement it in the main session in `app/` from the canvas artboard and following `DESIGN.md`, then run `npm run build`.
 - After implementing an approved design, review the built page with `impeccable` (`audit`, `polish`) and then `unslop`, under the overrides in the Skills section of `DESIGN.md`.
 - Small fixes that `DESIGN.md` already decides (a spacing value, a token, copy) go straight to code without a design pass and without the review skills.
 - If the user asks for something `DESIGN.md` forbids, the designer can show it as a labeled exploration. Build it only after the user approves it and `DESIGN.md` is updated in the same change.
