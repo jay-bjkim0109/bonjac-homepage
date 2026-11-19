@@ -87,6 +87,7 @@ export default function DirectionC() {
               {axes.map((axis) => (
                 <article key={axis.title} className="media-card">
                   <img
+                    draggable={false}
                     src={axis.image}
                     alt={axis.alt}
                     className="photo ratio-4-3"
@@ -141,6 +142,7 @@ export default function DirectionC() {
               {tiles.map((tile) => (
                 <article key={tile.label} className="stack gap-16">
                   <img
+                    draggable={false}
                     src={tile.image}
                     alt={tile.alt}
                     loading="lazy"

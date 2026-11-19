@@ -53,21 +53,21 @@ export function SelvaticoTitle() {
 }
 
 const stores = [
-  "성수동 LCDC 서울 (팝업)",
-  "무신사 뷰티 성수 메가스토어",
-  "무신사 뷰티 홍대 플래그십 스토어",
+  "무신사 뷰티 홍대",
+  "무신사 메가스토어 성수",
+  "롯데몰 벨리타운 청량리점",
+  "커넥트현대 청주점",
   "현대백화점 킨텍스점",
-  "커넥트 현대 청주",
   "아이파크몰 용산점",
 ];
 
 const onlineStores = [
   { name: "셀바티코 공식몰", href: "https://selvatico.co/" },
-  { name: "네이버 스마트스토어", href: "https://smartstore.naver.com/selvatico-official" },
+  { name: "네이버 스토어", href: "https://smartstore.naver.com/selvatico-official" },
   { name: "무신사 뷰티", href: "https://www.musinsa.com/brand/selvatico?gf=A" },
-  { name: "신세계 브이", href: "https://www.shinsegaev.com/dispctg/initBrandCtg.siv?disp_ctg_no=2607247333" },
-  { name: "더블유컨셉", href: "https://display.wconcept.co.kr/rn/brand/110650" },
-  { name: "더현대하이", href: "https://hi.thehyundai.com/brand/506746?target=brand&targetCode=136659" },
+  { name: "신세계V", href: "https://www.shinsegaev.com/dispctg/initBrandCtg.siv?disp_ctg_no=2607247333" },
+  { name: "W컨셉", href: "https://display.wconcept.co.kr/rn/brand/110650" },
+  { name: "더현대Hi", href: "https://hi.thehyundai.com/brand/506746?target=brand&targetCode=136659" },
   { name: "카카오톡선물하기", href: "https://gift.kakao.com/brand/15609" },
 ];
 
@@ -75,6 +75,7 @@ export function Stores() {
   return (
     <div className="split">
       <img
+        draggable={false}
         src={asset("/images/selvatico-popup.jpg")}
         alt="책장과 꽃으로 꾸민 Selvatico 팝업 스토어"
         loading="lazy"
@@ -160,6 +161,7 @@ export function Tech() {
             const content = (
               <>
                 <img
+                  draggable={false}
                   src={service.image}
                   alt={service.alt}
                   loading="lazy"

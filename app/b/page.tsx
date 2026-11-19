@@ -59,6 +59,7 @@ export default function DirectionB() {
       <main>
         <section>
           <img
+            draggable={false}
             src={asset("/images/selvatico-perfume.jpg")}
             alt="빛을 받아 초록 그림자를 드리운 Selvatico 오 드 퍼퓸 병"
             className="photo photo-hero"
@@ -131,6 +132,7 @@ export default function DirectionB() {
 
             <div className="split split-center">
               <img
+                draggable={false}
                 src={asset("/images/selvatico-reading.jpg")}
                 alt="테이블에 앉아 책을 읽는 여성의 뒷모습"
                 loading="lazy"
@@ -162,6 +164,7 @@ export default function DirectionB() {
                 </p>
               </div>
               <img
+                draggable={false}
                 src={asset("/images/grasse.jpg")}
                 alt="언덕 위에 자리한 프랑스 그라스의 마을 전경"
                 loading="lazy"
@@ -173,6 +176,7 @@ export default function DirectionB() {
               {tiles.map((tile) => (
                 <article key={tile.label} className="stack gap-16">
                   <img
+                    draggable={false}
                     src={tile.image}
                     alt={tile.alt}
                     loading="lazy"

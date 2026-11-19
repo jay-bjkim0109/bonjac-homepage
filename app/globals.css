@@ -458,6 +458,11 @@ a {
   color: var(--ink-tertiary);
 }
 
+/* Photos can't be picked up and dragged out of the page */
+img {
+  -webkit-user-drag: none;
+}
+
 .photo {
   display: block;
   width: 100%;
