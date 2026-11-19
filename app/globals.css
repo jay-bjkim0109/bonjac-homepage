@@ -262,6 +262,11 @@ a {
   border-top: 0;
 }
 
+/* A one-line section (Contact) takes half the usual section padding */
+.band-compact {
+  padding: 40px 0;
+}
+
 .band-title {
   font-size: 40px;
   font-weight: 700;
@@ -632,6 +637,10 @@ a.media-card:hover {
 
   .band {
     padding: 60px 0;
+  }
+
+  .band-compact {
+    padding: 40px 0;
   }
 
   .band-title {

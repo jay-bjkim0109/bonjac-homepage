@@ -161,7 +161,7 @@ export default function DirectionC() {
 
         <Tech />
 
-        <section id="contact" className="band">
+        <section id="contact" className="band band-compact">
           <div className="container split split-aside">
             <h2 className="band-title">Contact</h2>
             <div className="contact-row">

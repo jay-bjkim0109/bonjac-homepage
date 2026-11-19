@@ -70,7 +70,7 @@ Pretendard Variable (self-hosted via the `pretendard` npm package and `next/font
 ## Shape and spacing
 
 - Spacing scale (inside and between components): 2, 4, 8, 16, 24, 28px
-- Layout spacing (page-level only): 60px header height; section padding 80px (mobile: 60px); hero padding 120px (mobile: 80px)
+- Layout spacing (page-level only): 60px header height; section padding 80px (mobile: 60px), except Contact, a one-line section, which takes 40px on every layout; hero padding 120px (mobile: 80px)
 - Radius: 0px for surfaces and cards, 4px for buttons
 - No shadows
 
