@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "preview": "npx serve out"
+    "preview": "npx serve out",
+    "deploy": "NEXT_PUBLIC_BASE_PATH= next build && aws s3 sync out/ s3://bonjac-homepage --delete"
   },
   "dependencies": {
     "next": "^16.4.6",

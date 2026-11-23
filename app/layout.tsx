@@ -10,9 +10,9 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "본작 | Bonjac",
+  title: "(주)본작",
   description:
-    "프래그런스 브랜드 Selvatico와 IT 서비스 obbu를 운영하는 뷰티테크 기업, 주식회사 본작입니다.",
+    "니치향수 브랜드 Selvatico와 뷰티테크 서비스를 운영하는 주식회사 본작입니다.",
 };
 
 export default function RootLayout({
