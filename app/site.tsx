@@ -11,8 +11,8 @@ export function Header({ nav }: { nav: { href: string; label: string }[] }) {
             draggable={false}
             src={asset("/images/bonjac-logo.svg")}
             alt="BONJAC 本作"
-            width={135}
-            height={24}
+            width={157}
+            height={28}
           />
         </a>
         <nav className="nav">

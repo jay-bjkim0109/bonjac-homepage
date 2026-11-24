@@ -78,10 +78,10 @@ a {
   height: 44px;
 }
 
-/* Wordmark image, 24px high (DESIGN.md, Header) */
+/* Wordmark image, 28px high (DESIGN.md, Header) */
 .logo img {
   width: auto;
-  height: 24px;
+  height: 28px;
 }
 
 /* Links that don't fit beside the logo scroll sideways by drag (DESIGN.md, Header) */
