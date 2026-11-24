@@ -7,7 +7,13 @@ export function Header({ nav }: { nav: { href: string; label: string }[] }) {
     <header className="header">
       <div className="container header-inner">
         <a href="#" className="logo" draggable={false}>
-          BONJAC
+          <img
+            draggable={false}
+            src={asset("/images/bonjac-logo.svg")}
+            alt="BONJAC 本作"
+            width={135}
+            height={24}
+          />
         </a>
         <nav className="nav">
           {nav.map((item) => (

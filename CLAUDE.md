@@ -63,4 +63,4 @@ There are no tests or linter; verify changes with `npm run build`.
 
 - Copy in `/b` and `/c` comes from the design canvas and is a draft; the obbu description is not confirmed by the user. Company details in the footer come from the selvatico.co footer.
 - S3 website hosting: index document `index.html`, error document `404.html`. There is no `app/not-found.tsx` yet, so the export ships the Next.js default 404; `DESIGN.md` (Components) has the rule for the page when it is built.
-- No favicon or Open Graph image yet: both wait for assets from the user (`DESIGN.md`, Imagery).
+- The favicon is `app/icon.svg` (Next.js file convention) and the header logo is `public/images/bonjac-logo.svg`, both from the user's SVGs. No Open Graph image yet: it waits for an asset from the user (`DESIGN.md`, Imagery).

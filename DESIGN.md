@@ -49,7 +49,6 @@ Pretendard Variable (self-hosted via the `pretendard` npm package and `next/font
 |---|---|
 | Hero headline | `clamp(40px, 8vw, 60px)` / 700 / 1.2 |
 | Section title | 40px / 700 / 60px (mobile: 28px / 700 / 42px) |
-| Logo | 23px / 700 |
 | Card title | 23px / 600 / 29.9px |
 | Body | 16px / 400 / 24px |
 | Item title (news card) | 16px / 600 / 24px |
@@ -88,7 +87,7 @@ Pretendard Variable (self-hosted via the `pretendard` npm package and `next/font
 
 ## Components
 
-- **Header**: sticky at the top, white fill, 60px high, 1px `ink` bottom rule. Logo on the left, nav on the right. The nav stays inline on mobile (no hamburger menu) and never wraps; link gap 24px (mobile: 16px). When the links don't fit beside the logo (the five-link nav of `/b` and `/c` on mobile), the logo stays fixed and the nav scrolls sideways by drag, with no scrollbar, arrows or fade: the link cut off at the right edge is the cue.
+- **Header**: sticky at the top, white fill, 60px high, 1px `ink` bottom rule. Logo on the left, nav on the right. The logo is the wordmark image `public/images/bonjac-logo.svg` (BONJAC 本作), 24px high, in its own color `#231815`; it is not set in type. The nav stays inline on mobile (no hamburger menu) and never wraps; link gap 24px (mobile: 16px). When the links don't fit beside the logo (the five-link nav of `/b` and `/c` on mobile), the logo stays fixed and the nav scrolls sideways by drag, with no scrollbar, arrows or fade: the link cut off at the right edge is the cue.
 - **Primary button**: black fill, white 14px/700 text, 4px radius, 52px height, 24px horizontal padding; pressed `#474747` fill
 - **Outline button**: white fill, black 14px/700 text, 1px `#dddddd` border, 4px radius, 52px height, 24px horizontal padding; pressed `#f4f4f4` with `#474747` text
 - **Gray button**: `#f4f4f4` fill, black 14px/700 text, no border, 4px radius, 52px height, 24px horizontal padding; pressed `#dddddd` fill. Used for the two in-page buttons under the hero (`브랜드 보기`, `뷰티테크 보기`), which carry equal weight.
@@ -117,7 +116,8 @@ Pretendard Variable (self-hosted via the `pretendard` npm package and `next/font
 ## Imagery
 
 - Use only assets the user provides (brand PDFs in `references/`, files they hand over). Don't generate images or use stock photos or illustrations.
-- This covers the favicon and the Open Graph image too: don't create either until the user provides the file.
+- This covers the favicon and the Open Graph image too. The favicon is the user's square mark, `app/icon.svg` (its fill turns white in dark mode so it shows on a dark tab bar). Don't create an Open Graph image until the user provides the file.
+- The logo files are the user's SVGs: `public/images/bonjac-logo.svg` (wordmark, viewBox cropped to the glyphs so it lines up with the container edge) and `app/icon.svg` (square mark).
 - Images are square-cornered, with no shadows, gradients, or color overlays.
 - Until assets are provided, a section works as type and rules alone; don't add placeholder visuals.
 - The photos in `public/images/` now come from the design canvas, where the user's brand and event images are uploaded as assets. Download them with the Artifact tool (`action: "read"`, `path`: the 32-character id in the artboard's `/_blob/<id>` URL), then size them by the rule below.

@@ -76,9 +76,12 @@ a {
   align-items: center;
   flex: none;
   height: 44px;
-  font-size: 23px;
-  font-weight: 700;
-  text-decoration: none;
+}
+
+/* Wordmark image, 24px high (DESIGN.md, Header) */
+.logo img {
+  width: auto;
+  height: 24px;
 }
 
 /* Links that don't fit beside the logo scroll sideways by drag (DESIGN.md, Header) */
