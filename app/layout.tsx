@@ -32,8 +32,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: `${siteOrigin}${asset("/images/og-image.png")}`,
-        width: 800,
-        height: 800,
+        width: 1200,
+        height: 630,
         alt: "BONJAC 本作",
       },
     ],
