@@ -29,6 +29,8 @@ jobs:
         env:
           # Pages serves this repository at /<repository name>
           NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+          # Absolute URLs (og:image) need the origin the site is served from
+          NEXT_PUBLIC_SITE_ORIGIN: https://${{ github.repository_owner }}.github.io
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
