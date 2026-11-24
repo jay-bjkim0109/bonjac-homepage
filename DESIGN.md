@@ -116,7 +116,7 @@ Pretendard Variable (self-hosted via the `pretendard` npm package and `next/font
 ## Imagery
 
 - Use only assets the user provides (brand PDFs in `references/`, files they hand over). Don't generate images or use stock photos or illustrations.
-- This covers the favicon and the Open Graph image too. The favicon is the user's square mark, `app/icon.svg` (its fill turns white in dark mode so it shows on a dark tab bar). The Open Graph image is `public/images/og-image.png`, a 1200×630 PNG with the same mark centered on white, small enough that a preview crop does not cut it (link previews don't render SVG); don't design a separate one until the user provides the file.
+- This covers the favicon and the Open Graph image too. The favicon is the user's square mark, `app/icon.svg` (its fill turns white in dark mode so it shows on a dark tab bar). The Open Graph image is `public/images/og-1200x630.png`, a 1200×630 PNG with the same mark centered on white, small enough that a preview crop does not cut it (link previews don't render SVG); don't design a separate one until the user provides the file.
 - The logo files are the user's SVGs: `public/images/bonjac-logo.svg` (wordmark, viewBox cropped to the glyphs so it lines up with the container edge) and `app/icon.svg` (square mark, viewBox cropped to the glyphs with a 2% margin).
 - Images are square-cornered, with no shadows, gradients, or color overlays.
 - Until assets are provided, a section works as type and rules alone; don't add placeholder visuals.
