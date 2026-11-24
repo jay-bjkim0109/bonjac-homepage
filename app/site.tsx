@@ -77,15 +77,16 @@ const onlineStores = [
   { name: "카카오톡선물하기", href: "https://gift.kakao.com/brand/15609" },
 ];
 
-export function Stores() {
+// photoRight puts the photo on the right; it still comes first when the row wraps
+export function Stores({ photoRight = false }: { photoRight?: boolean }) {
   return (
-    <div className="split">
+    <div className={photoRight ? "split split-flip" : "split"}>
       <img
         draggable={false}
         src={asset("/images/selvatico-popup.jpg")}
         alt="책장과 꽃으로 꾸민 Selvatico 팝업 스토어"
         loading="lazy"
-        className="photo ratio-16-9"
+        className="photo photo-store ratio-16-9"
       />
       <div className="split split-lists">
         <a

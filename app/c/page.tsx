@@ -58,13 +58,7 @@ const tiles = [
     body: "오 드 퍼퓸 7가지 향과 핸드·바디 워시, 크림, 바디 미스트, 핸드 솔루션.",
     image: asset("/images/selvatico-collection.jpg"),
     alt: "향수, 핸드 앤 바디 워시, 크림이 나란히 놓인 Selvatico 제품 컬렉션",
-  },
-  {
-    label: "Packaging",
-    title: "책을 닮은 패키지",
-    body: "향의 이야기를 담는 또 하나의 챕터로, 책의 구조와 타이포그래피를 입혔습니다.",
-    image: asset("/images/selvatico-packaging.jpg"),
-    alt: "책처럼 쌓아 올린 Selvatico 패키지 상자",
+    crop: "photo-right",
   },
 ];
 
@@ -146,7 +140,7 @@ export default function DirectionC() {
                     src={tile.image}
                     alt={tile.alt}
                     loading="lazy"
-                    className="photo ratio-4-3"
+                    className={`photo ratio-4-3 ${tile.crop ?? ""}`.trim()}
                   />
                   <div className="stack gap-8">
                     <p className="card-label">{tile.label}</p>

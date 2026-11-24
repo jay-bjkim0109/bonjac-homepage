@@ -34,23 +34,6 @@ const facts = [
   },
 ];
 
-const tiles = [
-  {
-    label: "Collection",
-    title: "향수부터 바디 케어까지",
-    body: "오 드 퍼퓸 7가지 향과 핸드·바디 워시, 크림, 바디 미스트, 핸드 솔루션.",
-    image: asset("/images/selvatico-collection.jpg"),
-    alt: "향수, 핸드 앤 바디 워시, 크림이 나란히 놓인 Selvatico 제품 컬렉션",
-  },
-  {
-    label: "Packaging",
-    title: "책을 닮은 패키지",
-    body: "향의 이야기를 담는 또 하나의 챕터로, 책의 구조와 타이포그래피를 입혔습니다.",
-    image: asset("/images/selvatico-packaging.jpg"),
-    alt: "책처럼 쌓아 올린 Selvatico 패키지 상자",
-  },
-];
-
 export default function DirectionB() {
   return (
     <>
@@ -172,26 +155,25 @@ export default function DirectionB() {
               />
             </div>
 
-            <div className="grid">
-              {tiles.map((tile) => (
-                <article key={tile.label} className="stack gap-16">
-                  <img
-                    draggable={false}
-                    src={tile.image}
-                    alt={tile.alt}
-                    loading="lazy"
-                    className="photo ratio-4-3"
-                  />
-                  <div className="stack gap-8">
-                    <p className="card-label">{tile.label}</p>
-                    <h3 className="card-title">{tile.title}</h3>
-                    <p className="copy">{tile.body}</p>
-                  </div>
-                </article>
-              ))}
+            <div className="split split-center">
+              <img
+                draggable={false}
+                src={asset("/images/selvatico-collection.jpg")}
+                alt="향수, 핸드 앤 바디 워시, 크림이 나란히 놓인 Selvatico 제품 컬렉션"
+                loading="lazy"
+                className="photo photo-right ratio-4-3"
+              />
+              <div className="stack gap-8">
+                <p className="card-label">Collection</p>
+                <h3 className="card-title">향수부터 바디 케어까지</h3>
+                <p className="copy">
+                  오 드 퍼퓸 7가지 향과 핸드·바디 워시, 크림, 바디 미스트, 핸드
+                  솔루션.
+                </p>
+              </div>
             </div>
 
-            <Stores />
+            <Stores photoRight />
           </div>
         </section>
 

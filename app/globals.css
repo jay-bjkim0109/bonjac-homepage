@@ -335,6 +335,11 @@ a {
   flex-wrap: wrap-reverse;
 }
 
+/* First block on the right; it is still the first row when the row wraps */
+.split-flip {
+  flex-direction: row-reverse;
+}
+
 .split-hero > :first-child {
   flex: 3 1 480px;
 }
@@ -470,6 +475,15 @@ img {
   display: block;
   width: 100%;
   object-fit: cover;
+}
+
+.photo-right {
+  object-position: right;
+}
+
+/* Keeps the counter and wall sign in view when the store photo is cropped tall */
+.photo-store {
+  object-position: 75%;
 }
 
 .photo-hero {
